@@ -16,8 +16,10 @@ class SessionExpAuth(SessionAuth):
 
         self.session_duration = 0
 
-        if int(getenv('SESSION_DURATION')):
+        try:
             self.session_duration = int(getenv('SESSION_DURATION'))
+        except:
+            pass
 
     def create_session(self, user_id: str = None) -> str:
         """ Creates a Session ID for user_id """
